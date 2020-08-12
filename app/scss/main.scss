@@ -17,7 +17,7 @@ body{
     font-family: 'Montserrat', sans-serif;
     color: $black;
     height: auto;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 24px;
 }
 header{
@@ -220,7 +220,7 @@ button{
     }
 }
 .hero{
-    padding: 45px 0 63px;
+    padding: 45px 0 40px;
     background-image: url(../img/hero-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -234,7 +234,7 @@ button{
         text-transform: uppercase;
     }
     &__slider{
-        padding: 198px 0 190px;
+        padding: 198px 0 208px;
     }
     &__text{
         margin-top: 44px;
@@ -272,6 +272,9 @@ button{
         }
         
     }
+    &__swiper-pagination{
+        background-color: $white;
+    }
 } 
 .menu{
     display: flex;
@@ -299,28 +302,7 @@ button{
         }
     }
 }
-.slick-dots{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    bottom: 0;
-    width: 100%;
-    max-width: 1056px;
-    li{
-        flex-grow: 1;
-        background-color: $white;
-        height: 1px;
-        &.slick-active{
-            height: 3px;
-            background-color: $blue;
-        }
-        button{
-            font-size: 0;
-        }
-    }
-    
 
-}
 .arrows-slider{
     position: absolute;
     width: 47px;
@@ -329,7 +311,12 @@ button{
     background-size: 13px 27px;
     background-repeat: no-repeat;
     background-position: center;
-    bottom: -23.5px;
+    bottom: 0;
+    top: auto;
+    left: auto;
+    &:after{
+        display: none;
+    }
     &__left{
         right: 53px;
         background-image: url(../img/arrow-left.png);
@@ -434,8 +421,30 @@ button{
         height: 100%;
         object-fit: cover;
     }
+    &__text{
+        margin-top: 49px;
+        text-align: center;
+    }
+    &__items{
+        margin-top: 45px;
+    }
+  
     
 }
+
+.swiper-container-horizontal>.swiper-pagination-progressbar, .swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite{
+    position: absolute;
+    bottom: 22px;
+    top: auto;
+    height: 1px;
+    max-width: 1056px;
+    .swiper-pagination-progressbar-fill{
+        background-color: $blue;
+        height: 3px;
+        margin-top: -1.5px;
+    }
+}
+
 .services-arrows{
     border: 1px solid #bdbdbd;
     &__left{
@@ -443,6 +452,64 @@ button{
     }
     &__right{
         background-image: url(../img/arrow-right-grey.png);
+    }
+}
+
+.services-items{
+    &__inner{
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -1px;
+    }
+    &__container{
+        width: 33.333333%;
+        padding-right: 1px;
+        margin-bottom: 1px;
+    }
+    &__item{
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 30px;
+        justify-content: center;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        &:before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 266px;
+            bottom: 0;
+            left: 0;
+            background-image: url(../img/services-item-before.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+        &:hover{
+            .services-items__item-img{
+
+                transform: scale(1.3);
+            }
+        }
+    }
+    &__item-img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        bottom: 0;
+        left: 0;
+        transition: 1s;
+    }
+    &__item-title{
+        position: relative;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: $white;
+        z-index: 5;
     }
 }
 
