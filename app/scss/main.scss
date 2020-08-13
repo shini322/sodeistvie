@@ -1517,16 +1517,21 @@ button{
         
     }
     &__menu{
-        a{
-            color: $blue;
-            border-color: $blue;
-            &:hover{
-                background-color: $blue;
-                color: $white;
 
+        li{
+
+            a{
+                color: $blue;
+                border-color: $blue;
+                &:hover{
+                    background-color: $blue;
+                    color: $white;
+    
+                }
+    
             }
-
         }
+        
     }
     &__bottom{
         display: flex;
