@@ -122,13 +122,21 @@ button{
             display: none !important;
         }
     }
+
+    @include for-sm{
+        min-height: 0;
+    }
+    @include for-md-mob{
+        height: 100px;
+        padding: 0;
+    }
 }
 .logo{
     position: relative;
     border-radius: 15px;
     border: 1px solid $blue;
     @include for-md-mob{
-        transform: scale(.8);
+        transform: scale(.6);
         transform-origin: 0 center;
     }
     &__inner{
@@ -161,6 +169,7 @@ button{
         
     }
     &__hint{
+        display: none;
         position: absolute;
         padding: 6px 5px;
         font-size: 9px;
@@ -172,13 +181,16 @@ button{
         background-color: $blue;
         left: 50%;
         transform: translateX(-50%);
-        bottom: -18px;
-        opacity: 0;
+        bottom: -16px;
         transition: .3s;
+        &:hover{
+            display: block;
+        }
     }
     &__item{
+        padding-bottom: 2px;
         &:hover + .logo__hint{
-            opacity: 1;
+            display: block;
         }
     }
     &__item-img{
@@ -215,6 +227,10 @@ button{
     }
     &--mobile{
         flex-direction: column;
+        @include for-md{
+            margin-top: 20px;
+        }
+        @incl
     }
 
 }
@@ -228,6 +244,10 @@ button{
 .communication{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    @include for-md{
+        align-items: center;
+    }
     &__link{
         position: relative;
         margin-left: 41px;
@@ -428,6 +448,7 @@ button{
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
         @include for-md{
             flex-direction: column;
             
@@ -441,6 +462,11 @@ button{
     }
     li + li{
         margin-left: 6px;
+        @include for-md{
+
+            margin-top: 10px;
+            margin-left: 0;
+        }
 
     }
     li{
@@ -566,15 +592,18 @@ button{
     }
     &__tabs{
         position: relative;
-        display: flex;
+        display: flex;       
+        flex-wrap: wrap;
         justify-content: space-between;
         margin-top: 83px;
         @include for-md{
             margin-top: 40px;
+            // justify-content: center;
         }
         @include for-md-mob{
             // flex-direction: column;
             margin-top: 20px;
+            align-items: center;
         }
         &:after{
             content: '';
@@ -583,6 +612,10 @@ button{
             height: 1px;
             background-color: #bdbdbd;
             top: 50%;
+
+            @include for-md-mob{
+                display: none;
+            }
         }
 
     }
@@ -596,11 +629,18 @@ button{
         white-space: nowrap;
         background-color: $white;
         z-index: 10;
+        // width: 33.3333%;
         &:first-child{
             padding-left: 0;
+            @include for-md{
+                
+            }
         }
         &:last-child{
             padding-right: 0;
+            @include for-md{
+                
+            }
         }
         &.active{
             font-weight: 600;
@@ -613,10 +653,11 @@ button{
             }
             @include for-md-mob{
                 font-size: 12px;
-                line-height: 18px;
+                line-height: 14px;
             }
         }
         @include for-md{
+            width: 33.333%;
             text-align: center;
             white-space: initial;
         }
@@ -625,9 +666,12 @@ button{
             line-height: 18px;
         }
         @include for-md-mob{
-            padding: 0 5px ;
+            margin-bottom: 10px;
+            text-align: center;
+            padding: 0 5px;
             font-size: 10px;
-            line-height: 16px;
+            line-height: 12px;
+            width: 50%;
         }
         
     }
@@ -748,7 +792,7 @@ button{
         &:hover{
             .services-items__item-img{
 
-                transform: scale(1.3);
+                transform: scale(1.18);
             }
         }
         @include for-sm{
@@ -766,7 +810,7 @@ button{
         object-fit: cover;
         bottom: 0;
         left: 0;
-        transition: 1s;
+        transition: 1.2s;
     }
     &__item-title{
         position: relative;
@@ -852,6 +896,11 @@ button{
     &__item{
         display: flex;
         align-items: center;
+        &:hover{
+            .why-we__link{
+                color: $blue;
+            }
+        }
     }
     
     &__img-block{
@@ -879,10 +928,11 @@ button{
         }
     }
     &__link{
-        font-weight: 700;
+        font-weight: 700 !important;
         font-size: 18px;
         line-height: 24px;
         text-decoration: underline;
+        
         @include for-sm{
             font-size: 16px;
             line-height: 20px;
@@ -985,60 +1035,60 @@ button{
             text-decoration: none;
         }
     }
-    &__video-container{
-        position: relative;
-        max-height: 315px;
-        @include for-md{
-            margin-top: 30px;
-        }
+    // &__video-container{
+    //     position: relative;
+    //     max-height: 315px;
+    //     @include for-md{
+    //         margin-top: 30px;
+    //     }
+    // }
+    &__video{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
     
-    &__video-preview{
-        // position: absolute;
-        // width: 100%;
-        // height: 100%;
-        // left: 0;
-        // right: 0;
-        // top: 0;
-        // bottom: 0;
-        // background-image: url(../img/video-preview.jpg);
-        // background-size: cover;
-        // background-repeat: no-repeat;
-        // z-index: 10;
-        // cursor: pointer;
-        img{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            right: 0;
-        }
-    }
-    &__video-preview-button{
-        position: absolute;
-        // width: 103px;
-        // height: 103px;
-        background-image: url(../img/video-button.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 11;
-        
-    }
     &__video-block{
         display: block;
         position: relative;
-        padding-top: 56.25%;
         width: 655px;
+        height: 360px;
         flex-shrink: 0;
         overflow: hidden;
+        background-image: url(../img/video-preview.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        &:before{
+            content: '';
+            position: absolute;
+            width: 103px;
+            height: 103px;
+            background-image: url(../img/video-button.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include for-md-mob{
+                transform: scale(.7) translate(-50%, -50%);
+                transform-origin: 0;
+            }
+
+        }
         @include for-lg{
             width: 500px;
         }
+        @include for-md{
+            margin: 30px auto 0;
+        }
         @include for-sm{
             width: 100%;
+            height: 300px;
+        }
+        @include for-md-mob{
+            height: 200px;
         }
     }
     &__iframe{
@@ -1148,33 +1198,22 @@ button{
 .about-arrows{
     top: 50%;
     transform: translateY(-50%);
-    border: 1px solid #bdbdbd;
-    @include for-xl{        
-        transform: translateX(-50%);
-        top: auto;
-        bottom: -57px;
-    }
+    border: 1px solid #bdbdbd;    
     &__left{
         left: -70px;
         background-image: url(../img/arrow-left-grey.png);
         @include for-xl{
-            right: 51%;
-            left: auto;
-            transform: none;
-            top: auto;
-            bottom: -57px;
+            left: -23px;
         }
+        
     }
     &__right{
         right: -70px;
         background-image: url(../img/arrow-right-grey.png);
         @include for-xl{
-            left: 51%;
-            right: auto;
-            transform: none;
-            top: auto;
-            bottom: -57px;
+            right: -23px;
         }
+        
     }
 }
 .swipper-container{
@@ -1204,38 +1243,36 @@ button{
         overflow: hidden;
         height: 96px;
         width: 100%;
+        margin: 0 auto;
+        max-width: 178px;
         background-color: $white;
+        transition: .3s;
+        border: 1px solid #bdbdbd;
+        &:hover{
+            filter: grayscale(100%);
+        }
+    }
+    .swiper-container{
+        padding-top: 1px;
     }
 
 }
 .clients-arrows{
     top: 50%;
     border: 1px solid #bdbdbd;
-    @include for-xl{        
-        transform: translateX(-50%);
-        top: auto;
-        bottom: -57px;
-    }
+    
     &__left{
         left: -70px;
         background-image: url(../img/arrow-left-grey.png);
         @include for-xl{
-            right: 51%;
-            left: auto;
-            transform: none;
-            top: auto;
-            bottom: -57px;
+            left: 0;
         }
     }
     &__right{
         right: -70px;
         background-image: url(../img/arrow-right-grey.png);
         @include for-xl{
-            left: 51%;
-            right: auto;
-            transform: none;
-            top: auto;
-            bottom: -57px;
+            right: 0;
         }
     }
     
@@ -1615,6 +1652,15 @@ button{
         color: #727272;
         
     }
+    &__bottom-item-link{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #727272;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
     &__bottom-item-text + &__bottom-item-text{
         margin-top: 10px;
         @include for-md-mob{
@@ -1971,6 +2017,12 @@ button{
             right: 0;
             width: 12px;
             height: 12px;
+            transition: .3s;
+        }
+        &:hover{
+            &::after{
+                transform: translate(10px, -50%);
+            }
         }
     }
 }
@@ -2125,6 +2177,12 @@ button{
             background-repeat: no-repeat;
             background-size: cover;
             fill: #3481b8;
+            transition: .3s;
+        }
+        &:hover{
+            &::after{
+                transform: translate(10px,-50% );
+            }
         }
         @include for-md{
             margin-top: 20px;
@@ -2152,6 +2210,13 @@ button{
         height: 40px;
         border-radius: 50%;
         background-color: $blue;
+        transition: .3s;
+        &:hover{
+            transform: translateY(-5px);
+        }
+    }
+    &__social-item-img{
+        transition: .3s;
     }
     &__social-item + &__social-item{
         margin-left: 7px;
@@ -2819,5 +2884,11 @@ button{
         background-color: $white !important;
     }
 }
+
+
+.ymaps-map {
+    -ms-touch-action: auto !important;
+    touch-action: auto !important;
+    }
 
 

@@ -61,7 +61,7 @@ $('.about-licenses__slider').slick({
     prevArrow: '<button class="arrows-slider arrows-slider__left about-arrows about-arrows__left"></button>',
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1400,
         settings: {
           slidesToShow: 4,
           
@@ -97,7 +97,7 @@ $('.about-reviews__slider').slick({
     prevArrow: '<button class="arrows-slider arrows-slider__left about-arrows about-arrows__left"></button>',
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1400,
         settings: {
           slidesToShow: 4,
           
@@ -126,6 +126,15 @@ $('.about-reviews__slider').slick({
       }      
     ] 
 });
+
+document.addEventListener('click', function(e) {
+  var map = document.querySelector('#map-wrap iframe')
+  if(e.target.id === 'map-wrap') {
+      map.style.pointerEvents = 'all'
+  } else {
+      map.style.pointerEvents = 'none'
+  }
+})
     
 
 $(document).ready(function(){
@@ -138,6 +147,7 @@ $(document).ready(function(){
     
     $slick = $('.hero__slider');
     $slick.slick({
+      speed: 600,
       draggable: true,
       centerPadding: '20px',
       adaptiveHeight: false,
@@ -147,8 +157,9 @@ $(document).ready(function(){
       prevArrow: '<button class="arrows-slider arrows-slider__left"></button>'
     });
     
-    $slick2 = $('.services__slider-block');
-    $slick2.slick({
+    $slick = $('.services__slider-block');
+    $slick.slick({
+      speed: 600,
       draggable: true,
       fade: true,
       adaptiveHeight: false,
@@ -158,8 +169,9 @@ $(document).ready(function(){
     prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>'
     }); 
 
-    $slick3 = $('.content-page__slider-down-block');
-    $slick3.slick({
+    $slick = $('.content-page__slider-down-block');
+    $slick.slick({
+      speed: 600,
       slidesToShow: 1,
       draggable: true,
       fade: false,
@@ -215,22 +227,29 @@ $(document).ready(function(){
         
       }
     }
+    $($slick).each(function() {
+     
+    });
+
     $('.arrows-slider').click(function () {
       startProgressbar();
     });
     $('.slick-list').mousedown(function () {
       startProgressbar();
     });
+    
+    
     var w =  document.body.clientWidth;
     if (w <=  '1024' )
     {
       
-      $('.slick-list').blur(function () {
+      $('.slick-list').touchstart(function () {
         startProgressbar();
       });
       
     }
     
+     startProgressbar();
     
     
     function resetProgressbar() {
@@ -240,7 +259,7 @@ $(document).ready(function(){
       clearTimeout(tick);
     }
     
-    startProgressbar();
+  
 
 
     
@@ -276,6 +295,11 @@ $(document).ready(function(){
   
   });
 
+
+//   $('.logo__item').mouseover(function (e) {
+//     $(this).next().css('display', 'block');
+// });
+
   var mySwiper = new Swiper('.swiper-container', {
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
@@ -294,10 +318,10 @@ $(document).ready(function(){
         spaceBetween: 30
       },
       700: {
-        slidesPerView: 4,
-        spaceBetween: 40
+        slidesPerView: 3,
+        spaceBetween: 40,
       },
-      1023: {
+      1400: {
         slidesPerView: 5,
         spaceBetween: 40
       },
@@ -351,5 +375,8 @@ $(document).ready(function(){
                 } );    
     };
 } )();
+
+
+
   
   
