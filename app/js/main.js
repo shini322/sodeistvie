@@ -227,27 +227,26 @@ $(document).ready(function(){
         
       }
     }
-    $($slick).each(function() {
-     
-    });
-
-    $('.arrows-slider').click(function () {
-      startProgressbar();
-    });
-    $('.slick-list').mousedown(function () {
-      startProgressbar();
-    });
-    
-    
-    var w =  document.body.clientWidth;
-    if (w <=  '1024' )
-    {
-      
-      $('.slick-list').touchstart(function () {
+    $($bar).each(function() {
+      $('.arrows-slider').click(function () {
         startProgressbar();
       });
+      $('.slick-list').mousedown(function () {
+        startProgressbar();
+      });      
       
-    }
+      var w =  document.body.clientWidth;
+      if (w <=  '1024' )
+      {
+        
+        $('.slick-list').touchstart(function () {
+          startProgressbar();
+        });
+        
+      }
+    });
+
+    
     
      startProgressbar();
     
