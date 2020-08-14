@@ -16,7 +16,7 @@ h1,h2,h3,h4,h5,h6{
 body{
     font-family: 'Montserrat', sans-serif;
     color: $black;
-    height: auto;
+    height: 100vh;
     font-size: 16px;
     line-height: 24px;
 }
@@ -36,7 +36,7 @@ header{
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     max-width: 100%;
     background-color: $blue;
@@ -1374,6 +1374,9 @@ button{
         @include for-md{
             margin-top: 20px;
         }
+        @include for-md-mob{
+            margin-top: 10px;
+        }
     }
     &__form-label{
         font-size: 18px;
@@ -1505,6 +1508,9 @@ button{
             margin-top: 40px;
             flex-direction: column;
         }
+        @include for-md-mob{
+            margin-top: 20px;
+        }
     }
     &__main{
         padding: 28px 0;
@@ -1624,11 +1630,18 @@ button{
     padding: 74px 50px 91px;
     max-width: 430px;
     background-color: $blue;
+    @include for-md-mob{
+        padding: 50px 20px 50px;
+    }
     &__title{
         font-weight: 600;
         font-size: 26px;
         line-height: 30px;
         color: $white;
+        @include for-md-mob{
+            font-size: 22px;
+            line-height: 26px;
+        }
     }
     &__subtitle{
         margin-top: 10px;
@@ -1639,9 +1652,15 @@ button{
     }
     &__form{
         margin-top: 20px;
+        @include for-md-mob{
+            margin-top: 10px;
+        }
     }
     &__item + &__item{
         margin-top: 18px;
+        @include for-md-mob{
+            margin-top: 10px;
+        }
     }
     &__button{
         margin: 18px 0 0;
@@ -1695,11 +1714,14 @@ button{
     &__list{
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        max-width: 170px;
     }
     &__list-item{
         position: relative;
-        padding-right: 15px;
+        margin-bottom: 5px;
         margin-right: 10px;
+        padding-right: 15px;
         font-size: 14px;
         line-height: 18px;
         color: $white;
@@ -1715,6 +1737,7 @@ button{
             transform: translateY(-50%);
         }
         &:last-child{
+            width: auto;
             margin-right: 0;
             padding-right: 0;
             text-decoration: none;
@@ -1725,6 +1748,7 @@ button{
                 display: none;
             }
         }
+        
     }
 }
 
@@ -1925,11 +1949,14 @@ button{
     &__inner{
         padding: 84px 25px 0;
         background-color: $white;
+        @include for-md{
+            padding-bottom: 10px;
+        }
         @include for-sm{
-            padding: 30px 25px 0;
+            padding: 30px 25px 10px;
         }
         @include for-md-mob{
-            padding: 30px 15px 0;
+            padding: 30px 15px 10px;
         }
 
     }
@@ -2004,6 +2031,12 @@ button{
 .contacts-page{
     &__item{
         margin-top: 61px;
+        @include for-md{
+            margin-top: 40px;
+        }
+        @include for-md-mob{
+            margin-top: 20px;
+        }
     }
 }
 .contact-item{
@@ -2011,6 +2044,9 @@ button{
         display: flex;
         align-items: center;
         justify-content: space-between;
+        @include for-md{
+            flex-direction: column-reverse;
+        }
     }
     &__communication-link{
         margin-left: 0;
@@ -2018,6 +2054,22 @@ button{
     &__address{
         margin-top: 48px;
         font-weight: 500;
+        @include for-md{
+            margin-top: 30px;
+        }
+        @include for-md-mob{
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+    &__text-block{
+        @include for-md{
+            margin-top: 40px;
+        }
+        @include for-md-mob{
+            margin-top: 20px;
+        }
     }
     &__link-map{
         margin-top: 27px;
@@ -2042,11 +2094,23 @@ button{
             background-size: cover;
             fill: #3481b8;
         }
+        @include for-md{
+            margin-top: 20px;
+        }
+        @include for-md-mob{
+            margin-top: 15px;
+        }
         
     }
     &__social{
         display: flex;
         margin-top: 45px;
+        @include for-md{
+            margin-top: 30px;
+        }
+        @include for-md-mob{
+            margin-top: 15px;
+        }
     }
     &__social-item{
         display: flex;
@@ -2071,18 +2135,41 @@ button{
     &__map-block{
         margin-top: 73px;
         height: 505px;
+        @include for-md{
+            margin-top: 40px;
+            height: 300px;
+        }
+        @include for-md-mob{
+            margin-top: 20px;
+        }
     }
     &__map{
         width: 200%;
         margin-left: -50%;
+        @include for-md{
+            margin-left: 0;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 .team{
+    padding: 0 25px;
+    @include for-md{
+        padding: 40px 25px 0;
+    }
+    @include for-sm{
+        padding: 30px 15px 0;
+    }
     &__title{
         color: $white;
+        
     }
     &__inner{
         padding-bottom: 123px;
+        @include for-md{
+            padding-bottom: 30px;
+        }
     }
     &__row{
         display: grid;
@@ -2092,10 +2179,21 @@ button{
         max-width: 1870px;
         grid-gap: 20px;
         @include for-xl{
-            // grid-auto-columns: auto;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(5, 285px);
+            grid-template-rows: repeat(6, 285px);
             grid-auto-flow: row;
+        }
+        @include for-md{
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(6, 285px);    
+        }
+        @include for-tiny-tablet{
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(11, 285px); 
+        }
+        @include for-md-mob{
+            grid-template-rows: repeat(11, 200px); 
+
         }
     }
     &__img-block{
@@ -2117,11 +2215,11 @@ button{
             left: 0;
         }
         &--1{
-            @include for-xl{
-                grid-column-start: auto;
-                grid-column-end: auto;
-                grid-row-start: auto;
-                grid-row-end: auto;
+            @include for-md{
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 1;
+                grid-row-end: 2;
             }
         }
         &--2{
@@ -2129,16 +2227,30 @@ button{
             grid-column-end: 4;
             grid-row-start: 1;
             grid-row-end: 1;
-            @include for-xl{
-                grid-column-start: auto;
-                grid-column-end: auto;
-                grid-row-start: auto;
-                grid-row-end: auto;
+            @include for-md{
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 2;
+                grid-row-end: 3;
+            }
+            @include for-tiny-tablet{
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 2;
+                grid-row-end: 3;
             }
             
             
         }
         &--3{
+            // @include for-xl{
+            //     grid-column-start: 2;
+            //     grid-column-end: 3;
+            //     grid-row-start: 1;
+            //     grid-row-end: 2;
+            // }
+        }
+        &-4{
             @include for-xl{
                 grid-column-start: 1;
                 grid-column-end: 2;
@@ -2151,11 +2263,11 @@ button{
             grid-column-end: 2;
             grid-row-start: 2;
             grid-row-end: 4;
-            @include for-xl{
-                grid-column-start: auto;
-                grid-column-end: auto;
-                grid-row-start: auto;
-                grid-row-end: auto;
+            @include for-md{
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 5;
+                grid-row-end: 7;
             }
         }
         &--7{
@@ -2164,10 +2276,22 @@ button{
             grid-row-start: 2;
             grid-row-end: 4;
             @include for-xl{
-                grid-column-start: auto;
-                grid-column-end: auto;
-                grid-row-start: auto;
-                grid-row-end: auto;
+                grid-column-start: 3;
+                grid-column-end: 4;
+                grid-row-start: 2;
+                grid-row-end: 4;
+            }
+            @include for-md{
+                grid-column-start: 2;
+                grid-column-end: 3;
+                grid-row-start: 5;
+                grid-row-end: 7;
+            }
+            @include for-tiny-tablet{
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 8;
+                grid-row-end: 10;
             }
         }
     }
@@ -2184,6 +2308,10 @@ button{
         width: 100%;
         left: 50%;
         transform: translateX(-50%);
+        @include for-md-mob{
+            padding: 0 5px;
+            bottom: 20px;
+        }
     }
     &__item-title{
         font-weight: 600;
@@ -2191,6 +2319,10 @@ button{
         line-height: 26px;
         color: $white;
         text-align: center;
+        @include for-md-mob{
+            font-size: 16px;
+            line-height: 20px;
+        }
     }
     &__item-position{
         font-weight: 500;
@@ -2198,6 +2330,439 @@ button{
         line-height: 22px;
         color: $white;
         text-align: center;
+        @include for-md-mob{
+            font-size: 14px;
+            line-height: 18px;
+        }
     }
     
 }
+
+.content-page{
+    &__inner{
+        padding: 70px 25px 73px;
+        background-color: $white;
+        @include for-md{
+            padding: 50px 25px 60px;
+        }
+        @include for-sm{
+            padding: 30px 15px 50px;
+        }
+        @include for-md-mob{
+            padding-bottom: 20px;
+        }
+    }
+    &__slider{
+        position: relative;
+        margin-top: 44px;
+        padding-bottom: 63px;
+        @include for-md-mob{
+            margin-top: 25px;
+            padding-bottom: 40px;
+        }
+    }
+    &__slider-progress{
+        background-color: #bdbdbd;
+    }
+    h2{
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 40px;
+        @include for-md{
+            font-size: 32px;
+            line-height: 36px;
+        }
+        @include for-sm{
+            font-size: 28px;
+            line-height: 32px;
+        }
+        @include for-md-mob{
+            font-size: 22px;
+            line-height: 26px;
+        }
+    }
+    h3{
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 30px;
+        @include for-md{
+            font-size: 22px;
+            line-height: 26px;
+        }
+        @include for-sm{
+            
+        }
+        @include for-md-mob{
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+    h4{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        
+        @include for-md-mob{
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+    h5{
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 21px;
+        @include for-md-mob{
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+    h6{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        @include for-md-mob{
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+    h2,h3,h4,h5,h6{
+        margin-bottom: 24px;
+        @include for-md{
+            margin-bottom: 15px;
+        }
+    }
+   
+    &__text-block{
+        margin-top: 55px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        @include for-md{
+            margin-top: 30px;
+        }
+        @include for-md-mob{
+            margin-top: 15px;
+        }
+        p{
+            margin-top: 36px;
+            @include for-md-mob{
+                margin-top: 20px;
+            }
+        }
+        a{
+            font-weight: 700;
+            color: $blue;
+            text-decoration: underline;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+        ul{
+            margin-top: 22px;
+            @include for-sm{
+                margin-top: 10px;
+            }
+            li{
+                position: relative;
+                padding-left: 36px;
+                margin-left: 24px;
+                @include for-md{
+                    margin-left: 0;
+                }
+                @include for-md-mob{
+                    padding-left: 25px;
+                }
+                &:before{
+                    content: "";
+                    position: absolute;
+                    width: 20px;
+                    height: 15px;
+                    left: 0;
+                    top: 4px;
+                    background-image: url(../img/check.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    @include for-md-mob{
+                        transform: scale(.8);
+                        transform-origin: left center;
+                    }
+                }
+
+            }
+            li + li{
+                margin-top: 23px;
+            }
+        }
+    }
+    &__img-blocks{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 59px;
+        @include for-md{
+            flex-direction: column;
+        }
+        @include for-md-mob{
+            margin-top: 30px;
+        }
+    }
+    &__img-block{
+        max-width: 570px;
+        height: 380px;
+        @include for-md{
+            height: 300px;
+            margin: 0 auto;
+        }
+        @include for-md-mob{
+            height: auto;
+        }
+    }
+    &__img-block + &__img-block{
+        margin-left: 10px;
+        @include for-md{
+            margin-top: 10px;
+            margin-left: auto;
+        }
+    }
+    &__img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
+    }
+    &__table{
+        margin-top: 65px;
+        border-spacing: 0;
+    }
+    &__tr{
+        @include for-md-mob{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 1px solid #ceccdd;
+            border-bottom: none;
+        }
+        &:first-child{
+            .content-page__td{
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 22px;
+                padding: 21px 15px;
+                background-color: $blue !important;
+                text-align: center;
+                color: $white;
+                border-right: none;
+            }
+            @include for-md-mob{
+                display: none;
+            }
+        }
+        &:nth-child(2){
+            .content-page__td{
+                padding-right: 15px;
+                padding-bottom: 5px;
+                padding-top: 43px;
+                @include for-md{
+                    padding: 18px 15px 18px 30px;
+                }
+            }
+        }
+        &:last-child{
+            .content-page__td{
+                border-bottom: 1px solid #ceccdd;
+                padding-bottom: 31px;
+                padding-top: 5px;
+                @include for-md{
+                    padding: 18px 15px 18px 30px;
+                }
+            }
+            @include for-md-mob{
+                border-bottom: 1px solid #ceccdd;
+            }
+        }
+        &:nth-child(2n + 1){
+            .content-page__td{
+                background-color: #f8f8f8;
+            }
+        }
+    }
+    &__td{
+        padding: 18px 15px 18px 50px;
+        border-bottom: 1px solid #ceccdd;
+        border-right: 1px solid #ceccdd;
+        width: 50%;
+        @include for-md-mob{
+            padding: 15px !important;
+            width: 100%;
+            border: none !important;
+        }
+        &--title{
+            display: none;
+            font-size: 16px;
+            line-height: 20px;
+            @include for-md-mob{
+                display: block;
+            }
+        }
+        &:first-child{
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            border-left: 1px solid #ceccdd;
+            @include for-md{
+                padding: 18px 15px 18px 30px;
+            }
+            
+        }
+        &:last-child{
+            font-weight: 500;
+            font-size: 24px;
+            border-right: 1px solid #ceccdd;
+            @include for-md{
+                padding: 18px 15px 18px 30px;
+            }
+        }
+    }
+    &__quote{
+        margin-top: 60px;
+        padding: 38px 70px;
+        padding-right: 194px;
+        background-color: #f8f8f8;
+        line-height: 28px;
+        @include for-md{
+            padding-right: 50px;
+        }
+        @include for-sm{
+            padding: 20px 50px;
+        }
+        @include for-md-mob{
+            padding: 15px 20px;
+        }
+    }
+    &__quote-text{
+        position: relative;
+        padding-top: 44px;
+        &:before{
+            content: '';
+            position: absolute;
+            width: 29px;
+            height: 25px;
+            top: 0;
+            left: 0;
+            background-image: url(../img/quotes.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+    &__slider-down{
+        position: relative;
+        margin-top: 86px;
+        padding-bottom: 80px;
+        @include for-sm{
+            margin-top: 50px;
+            padding-bottom: 50px;
+        }
+        @include for-md-mob{
+            margin-top: 30px;
+            padding-bottom: 40px;
+        }
+    }
+    &__slider-down-block{
+        position: static;
+    }
+    &__slider-down-img-block{
+        max-width: 400px;
+        height: 266px;
+        @include for-md-mob{
+            display: block !important;
+            margin: 0 auto;
+        }
+    }
+    &__slider-down-img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+   
+}
+.content-article{
+    &__inner{
+        margin-top: 89px;
+        @include for-md{
+            margin-top: 50px;
+        }
+    }
+    &__item{
+        position: relative;
+        display: flex;
+    }
+    &__number{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 0;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-color: $blue;
+        color: $white;
+        @include for-sm{
+            top: -6px;
+        }
+    }
+    &__text{
+        padding-left: 52px;
+        @include for-sm{
+            padding-left: 0;
+        }
+    }
+    &__title{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: $blue;
+        @include for-sm{
+            padding-left: 45px;
+        }
+    }
+    &__row{
+        margin-top: 35px;
+    }
+    &__list{
+        margin-top: 11px;
+    }
+    &__list-item{
+        position: relative;
+        padding-left: 36px;
+        &:before{
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 15px;
+            left: 0;
+            top: 4px;
+            background-image: url(../img/check.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            @include for-sm{
+                left: 7px;
+            }
+        }
+        @include for-md-mob{
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+    &__list-item + &__list-item{
+        margin-top: 15px;
+        
+    }
+    &__item + &__item{
+        margin-top: 31px;
+    }
+}
+
+

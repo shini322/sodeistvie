@@ -195,7 +195,36 @@ $(document).ready(function(){
       pauseOnDotsHover: false,
       nextArrow: '<button class="arrows-slider arrows-slider__right services-arrows services-arrows__right"></button>',
     prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>'
-    });    
+    }); 
+    
+    $slick = $('.content-page__slider-down-block');
+    $slick.slick({
+      slidesToShow: 1,
+      draggable: true,
+      fade: false,
+      adaptiveHeight: false,
+      mobileFirst: true,
+      pauseOnDotsHover: false,
+      nextArrow: '<button class="arrows-slider arrows-slider__right services-arrows services-arrows__right"></button>',
+    prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>',
+    responsive: [
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 2,
+          
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3,
+          
+        }
+      }
+      
+    ] 
+    });
   });
 
 
