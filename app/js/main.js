@@ -131,7 +131,7 @@ $('.about-reviews__slider').slick({
 $(document).ready(function(){
     var time = 5;
     var $bar,
-        $slick,
+        $slick, $slick2, $slick3,
         isPause,
         tick,
         percentTime;
@@ -144,7 +144,47 @@ $(document).ready(function(){
       mobileFirst: true,
       pauseOnDotsHover: false,
       nextArrow: '<button class="arrows-slider arrows-slider__right"></button>',
-    prevArrow: '<button class="arrows-slider arrows-slider__left"></button>'
+      prevArrow: '<button class="arrows-slider arrows-slider__left"></button>'
+    });
+    
+    $slick2 = $('.services__slider-block');
+    $slick2.slick({
+      draggable: true,
+      fade: true,
+      adaptiveHeight: false,
+      mobileFirst: true,
+      pauseOnDotsHover: false,
+      nextArrow: '<button class="arrows-slider arrows-slider__right services-arrows services-arrows__right"></button>',
+    prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>'
+    }); 
+
+    $slick3 = $('.content-page__slider-down-block');
+    $slick3.slick({
+      slidesToShow: 1,
+      draggable: true,
+      fade: false,
+      adaptiveHeight: false,
+      mobileFirst: true,
+      pauseOnDotsHover: false,
+      nextArrow: '<button class="arrows-slider arrows-slider__right services-arrows services-arrows__right"></button>',
+    prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>',
+    responsive: [
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 2,
+          
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3,
+          
+        }
+      }
+      
+    ] 
     });
 
     
@@ -172,8 +212,25 @@ $(document).ready(function(){
             $slick.slick('slickNext');
             startProgressbar();
           }
+        
       }
     }
+    $('.arrows-slider').click(function () {
+      startProgressbar();
+    });
+    $('.slick-list').mousedown(function () {
+      startProgressbar();
+    });
+    var w =  document.body.clientWidth;
+    if (w <=  '1024' )
+    {
+      
+      $('.slick-list').blur(function () {
+        startProgressbar();
+      });
+      
+    }
+    
     
     
     function resetProgressbar() {
@@ -186,48 +243,27 @@ $(document).ready(function(){
     startProgressbar();
 
 
-    $slick = $('.services__slider-block');
-    $slick.slick({
-      draggable: true,
-      fade: true,
-      adaptiveHeight: false,
-      mobileFirst: true,
-      pauseOnDotsHover: false,
-      nextArrow: '<button class="arrows-slider arrows-slider__right services-arrows services-arrows__right"></button>',
-    prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>'
-    }); 
     
-    $slick = $('.content-page__slider-down-block');
-    $slick.slick({
-      slidesToShow: 1,
-      draggable: true,
-      fade: false,
-      adaptiveHeight: false,
-      mobileFirst: true,
-      pauseOnDotsHover: false,
-      nextArrow: '<button class="arrows-slider arrows-slider__right services-arrows services-arrows__right"></button>',
-    prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>',
-    responsive: [
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 2,
-          
-        }
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 3,
-          
-        }
+
+    function interval() {
+      if(isPause === false) {
+        percentTime += 1 / (time+0.1);
+        $bar.css({
+          width: percentTime+"%"
+        });
+        if(percentTime >= 100)
+          {
+            $slick.slick('slickNext');
+            startProgressbar();
+            
+          }
       }
-      
-    ] 
-    });
+    }
+    
+  
   });
 
-
+  
 
   $('.tab').on('click', function(e){
     e.preventDefault(); 

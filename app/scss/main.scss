@@ -1,6 +1,7 @@
 @import "_vars";
 @import "_libs";
 @import "_fonts";
+@import "text-styles";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap');
 
 *, *::before, *::after{
@@ -855,7 +856,7 @@ button{
     
     &__img-block{
         margin-right: 38px;
-        max-width: 61px;
+        width: 61px;
         max-height: 61px;
         flex-shrink: 0;
         @include for-sm{
@@ -865,6 +866,7 @@ button{
         @include for-md-mob{
             min-width: 0;
             margin-right: 15px;
+            width: auto;
             max-width: 40px;
             max-height: 40px;
         }
@@ -988,7 +990,6 @@ button{
         max-height: 315px;
         @include for-md{
             margin-top: 30px;
-            height: 350px;
         }
     }
     
@@ -1056,6 +1057,10 @@ button{
     }
     &__reviews{
         margin-top: 52px;
+
+        @include for-xl{
+            margin-top: 70px;
+        }
         @include for-sm{
             margin-top: 30px;
         }
@@ -1155,7 +1160,7 @@ button{
         @include for-xl{
             right: 51%;
             left: auto;
-            transform: translateX(-50%);
+            transform: none;
             top: auto;
             bottom: -57px;
         }
@@ -1166,7 +1171,7 @@ button{
         @include for-xl{
             left: 51%;
             right: auto;
-            transform: translateX(-50%);
+            transform: none;
             top: auto;
             bottom: -57px;
         }
@@ -1206,13 +1211,32 @@ button{
 .clients-arrows{
     top: 50%;
     border: 1px solid #bdbdbd;
+    @include for-xl{        
+        transform: translateX(-50%);
+        top: auto;
+        bottom: -57px;
+    }
     &__left{
         left: -70px;
         background-image: url(../img/arrow-left-grey.png);
+        @include for-xl{
+            right: 51%;
+            left: auto;
+            transform: none;
+            top: auto;
+            bottom: -57px;
+        }
     }
     &__right{
         right: -70px;
         background-image: url(../img/arrow-right-grey.png);
+        @include for-xl{
+            left: 51%;
+            right: auto;
+            transform: none;
+            top: auto;
+            bottom: -57px;
+        }
     }
     
 }
@@ -1473,10 +1497,14 @@ button{
         }
     }
     &__conditions-link{
-        line-height: 1;
+        display: inline;
+        line-height: 24px;
         border-bottom: 1px solid $white;
         &:hover{
             border-bottom-color: transparent;
+        }
+        @include for-sm{
+            line-height: 18px;
         }
     }
 }
@@ -2249,14 +2277,7 @@ button{
             
             
         }
-        &--3{
-            // @include for-xl{
-            //     grid-column-start: 2;
-            //     grid-column-end: 3;
-            //     grid-row-start: 1;
-            //     grid-row-end: 2;
-            // }
-        }
+       
         &-4{
             @include for-xl{
                 grid-column-start: 1;
@@ -2371,67 +2392,67 @@ button{
     &__slider-progress{
         background-color: #bdbdbd;
     }
-    h2{
-        font-weight: 600;
-        font-size: 36px;
-        line-height: 40px;
-        @include for-md{
-            font-size: 32px;
-            line-height: 36px;
-        }
-        @include for-sm{
-            font-size: 28px;
-            line-height: 32px;
-        }
-        @include for-md-mob{
-            font-size: 22px;
-            line-height: 26px;
-        }
-    }
-    h3{
-        font-weight: 500;
-        font-size: 26px;
-        line-height: 30px;
-        @include for-md{
-            font-size: 22px;
-            line-height: 26px;
-        }
-        @include for-sm{
+    // h2{
+    //     font-weight: 600;
+    //     font-size: 36px;
+    //     line-height: 40px;
+    //     @include for-md{
+    //         font-size: 32px;
+    //         line-height: 36px;
+    //     }
+    //     @include for-sm{
+    //         font-size: 28px;
+    //         line-height: 32px;
+    //     }
+    //     @include for-md-mob{
+    //         font-size: 22px;
+    //         line-height: 26px;
+    //     }
+    // }
+    // h3{
+    //     font-weight: 500;
+    //     font-size: 26px;
+    //     line-height: 30px;
+    //     @include for-md{
+    //         font-size: 22px;
+    //         line-height: 26px;
+    //     }
+    //     @include for-sm{
             
-        }
-        @include for-md-mob{
-            font-size: 18px;
-            line-height: 22px;
-        }
-    }
-    h4{
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 24px;
+    //     }
+    //     @include for-md-mob{
+    //         font-size: 18px;
+    //         line-height: 22px;
+    //     }
+    // }
+    // h4{
+    //     font-weight: 500;
+    //     font-size: 20px;
+    //     line-height: 24px;
         
-        @include for-md-mob{
-            font-size: 16px;
-            line-height: 20px;
-        }
-    }
-    h5{
-        font-weight: 500;
-        font-size: 17px;
-        line-height: 21px;
-        @include for-md-mob{
-            font-size: 14px;
-            line-height: 18px;
-        }
-    }
-    h6{
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 18px;
-        @include for-md-mob{
-            font-size: 12px;
-            line-height: 16px;
-        }
-    }
+    //     @include for-md-mob{
+    //         font-size: 16px;
+    //         line-height: 20px;
+    //     }
+    // }
+    // h5{
+    //     font-weight: 500;
+    //     font-size: 17px;
+    //     line-height: 21px;
+    //     @include for-md-mob{
+    //         font-size: 14px;
+    //         line-height: 18px;
+    //     }
+    // }
+    // h6{
+    //     font-weight: 500;
+    //     font-size: 14px;
+    //     line-height: 18px;
+    //     @include for-md-mob{
+    //         font-size: 12px;
+    //         line-height: 16px;
+    //     }
+    // }
     h2,h3,h4,h5,h6{
         margin-bottom: 24px;
         @include for-md{
@@ -2691,16 +2712,25 @@ button{
         height: 100%;
         object-fit: cover;
     }
+    &__circle-list{
+        li{
+            &:before{
+                width: 5px;
+                height: 5px;
+                background-color: $blue;
+                border-radius: 50%;
+            }
+        }
+    
+    }
 
    
 }
 .content-article{
-    &__inner{
-        margin-top: 89px;
+    padding-top: 89px;
         @include for-md{
-            margin-top: 50px;
+            padding-top: 50px;
         }
-    }
     &__item{
         position: relative;
         display: flex;
@@ -2739,11 +2769,11 @@ button{
         margin-top: 35px;
     }
     &__list{
-        margin-top: 11px;
+        margin-top: 11px !important;
     }
     &__list-item{
         position: relative;
-        padding-left: 36px;
+        // padding-left: 36px;
         &:before{
             content: "";
             position: absolute;
@@ -2769,6 +2799,24 @@ button{
     }
     &__item + &__item{
         margin-top: 31px;
+    }
+}
+.slider-down{
+    &__inner{
+        position: relative;
+        margin-top: 109px;
+        padding-bottom: 63px;
+        margin-bottom: 78px;
+        @include for-md-mob{
+            margin-top: 25px;
+            padding-bottom: 40px;
+        }
+    }
+    &__slider-progress{
+        background-color: $white;
+    }
+    &__progress{
+        background-color: $white !important;
     }
 }
 
