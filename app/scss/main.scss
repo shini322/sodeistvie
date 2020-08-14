@@ -1728,7 +1728,11 @@ button{
         text-decoration: underline;
         a{
             text-decoration: underline;
+            &:hover{
+                text-decoration: none;
+            }
         }
+        
         &:after{
             content: '-';
             position: absolute;
@@ -2180,7 +2184,7 @@ button{
         grid-gap: 20px;
         @include for-xl{
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(6, 285px);
+            grid-template-rows: repeat(3, 285px);
             grid-auto-flow: row;
         }
         @include for-md{
@@ -2188,13 +2192,14 @@ button{
             grid-template-rows: repeat(6, 285px);    
         }
         @include for-tiny-tablet{
-            grid-template-columns: repeat(1, 1fr);
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: repeat(1, 450px);
             grid-template-rows: repeat(11, 285px); 
+            justify-items: center;
+            
         }
-        @include for-md-mob{
-            grid-template-rows: repeat(11, 200px); 
-
-        }
+        
     }
     &__img-block{
         position: relative;
@@ -2203,6 +2208,8 @@ button{
     &__item{
         position: relative;
         overflow: hidden;
+        @include for-tiny-tablet{
+        }
         &:before{
             content: "";
             position: absolute;
