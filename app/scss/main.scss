@@ -169,7 +169,7 @@ button{
         
     }
     &__hint{
-        display: none;
+        opacity: 0;
         position: absolute;
         padding: 6px 5px;
         font-size: 9px;
@@ -190,7 +190,7 @@ button{
     &__item{
         padding-bottom: 2px;
         &:hover .logo__hint{
-            display: block;
+            opacity: 1;
         }
 
         &--1{
@@ -276,13 +276,17 @@ button{
     flex-shrink: 0;
     max-width: 100px;
     width: 100%;
-    &__link{
-        display: block;
+    &__container{
+        padding-right: 10px;
         flex-shrink: 0;
         width: 33.333333%;
-        padding-right: 10px;
     }
-    
+    &__link{
+        transition: .3s;
+        &:hover{
+            transform: scale(.9);
+        }
+    }    
 }
 .communication{
     display: flex;
@@ -374,7 +378,7 @@ button{
     }
     &__slider-item{
         padding: 240px 200px 249px;
-        background-image: url(../img/hero-bg.jpg);
+        
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -489,6 +493,7 @@ button{
             padding: 20px; 
             flex-direction: column;
             width: 100%;
+            height: 100%;
             top: 0;
             left: 0;
             background-color: $white;
@@ -1206,8 +1211,10 @@ button{
         flex-shrink: 0;
         overflow: hidden;
         background-image: url(../img/video-preview.jpg);
-        background-size: cover;
+        background-size: 100%;
+        background-position: center;
         background-repeat: no-repeat;
+        transition: .5s;
         &:before{
             content: '';
             position: absolute;
@@ -1225,6 +1232,9 @@ button{
             }
 
         }
+        &:hover{
+            background-size: 120%;
+        }
         @include for-lg{
             width: 500px;
         }
@@ -1237,6 +1247,7 @@ button{
         }
         @include for-md-mob{
             height: 200px;
+            background-size: cover;
         }
     }
     &__iframe{
@@ -1698,6 +1709,7 @@ button{
         display: inline;
         line-height: 24px;
         border-bottom: 1px solid $white;
+        transition: .3s;
         &:hover{
             border-bottom-color: transparent;
         }
@@ -3120,13 +3132,19 @@ button{
     display: none;
     padding: 0;
     width: 70%;
-    overflow: hidden;
+    height: 70%;
+    overflow: visible;
     @include for-md{
         height: 50%;
     }
     &__map{
         height: 100%;
         width: 100%;
+        margin-left: 0;
+    }
+    .fancybox-close-small{
+        top: -34px;
+        right: -34px;
     }
 }
 .map-modal-block{
