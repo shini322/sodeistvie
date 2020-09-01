@@ -55,6 +55,18 @@
 //         }
 //     }
 // }
+
+// document.addEventListener('click', function(e) {
+//   var map = document.querySelector('#wrapMap iframe');
+//   if(e.target.id === '#wrapMap') {
+//     map.style.pointerEvents = 'all';
+//   } else {
+//     map.style.pointerEvents = 'none';
+//   }
+// });
+
+
+
 $('.about-licenses__slider').slick({
     slidesToShow: 5,
     nextArrow: '<button class="arrows-slider arrows-slider__right about-arrows about-arrows__right"></button>',
@@ -68,27 +80,27 @@ $('.about-licenses__slider').slick({
         }
       },
       {
-        breakpoint: 800,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 2
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 750,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1
         }
       },
       {
-        breakpoint: 440,
+        breakpoint: 550,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
         }
       }      
-    ]
+    ] 
 });
 
 $('.about-reviews__slider').slick({
@@ -104,21 +116,21 @@ $('.about-reviews__slider').slick({
         }
       },
       {
-        breakpoint: 800,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 2
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 750,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1
         }
       },
       {
-        breakpoint: 440,
+        breakpoint: 550,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
@@ -127,14 +139,7 @@ $('.about-reviews__slider').slick({
     ] 
 });
 
-document.addEventListener('click', function(e) {
-  var map = document.querySelector('#map-wrap iframe')
-  if(e.target.id === 'map-wrap') {
-      map.style.pointerEvents = 'all'
-  } else {
-      map.style.pointerEvents = 'none'
-  }
-})
+
     
 
 $(document).ready(function(){
@@ -146,19 +151,22 @@ $(document).ready(function(){
         percentTime;
     
     $slick = $('.hero__slider');
+    
     $slick.slick({
-      speed: 600,
+  
+ 
       draggable: true,
       centerPadding: '20px',
       adaptiveHeight: false,
       mobileFirst: true,
       pauseOnDotsHover: false,
-      nextArrow: '<button class="arrows-slider arrows-slider__right"></button>',
-      prevArrow: '<button class="arrows-slider arrows-slider__left"></button>'
+      nextArrow: $('.hero__slider-arrow-right'),
+      prevArrow: $('.hero__slider-arrow-right')
     });
     
-    $slick = $('.services__slider-block');
-    $slick.slick({
+    $slick2 = $('.services__slider-block');
+    $slick2.slick({
+ 
       speed: 600,
       draggable: true,
       fade: true,
@@ -169,8 +177,10 @@ $(document).ready(function(){
     prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>'
     }); 
 
-    $slick = $('.content-page__slider-down-block');
-    $slick.slick({
+    $slick3 = $('.content-page__slider-down-block');
+    $slick3.slick({
+      autoplay:true,
+      autoplaySpeed:5500,
       speed: 600,
       slidesToShow: 1,
       draggable: true,
@@ -179,7 +189,7 @@ $(document).ready(function(){
       mobileFirst: true,
       pauseOnDotsHover: false,
       nextArrow: '<button class="arrows-slider arrows-slider__right services-arrows services-arrows__right"></button>',
-    prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>',
+      prevArrow: '<button class="arrows-slider arrows-slider__left services-arrows services-arrows__left"></button>',
     responsive: [
       {
         breakpoint: 550,
@@ -222,6 +232,8 @@ $(document).ready(function(){
         if(percentTime >= 100)
           {
             $slick.slick('slickNext');
+            $slick2.slick('slickNext');
+            $slick3.slick('slickNext');
             startProgressbar();
           }
         
@@ -257,44 +269,43 @@ $(document).ready(function(){
       });
       clearTimeout(tick);
     }
+
+
+    $('.tab').on('click', function(e){
+      e.preventDefault(); 
+    
+      $($(this).parent().parent().find('.tab')).removeClass('active');
+      $($(this).parent().parent().siblings().find('.tab-content')).removeClass('active');
+    
+      $(this).addClass('active');
+      $($(this).attr('href')).addClass('active');
+      startProgressbar();
+    });
     
   
 
 
     
 
-    function interval() {
-      if(isPause === false) {
-        percentTime += 1 / (time+0.1);
-        $bar.css({
-          width: percentTime+"%"
-        });
-        if(percentTime >= 100)
-          {
-            $slick.slick('slickNext');
-            startProgressbar();
+    // function interval() {
+    //   if(isPause === false) {
+    //     percentTime += 1 / (time+0.1);
+    //     $bar.css({
+    //       width: percentTime+"%"
+    //     });
+    //     if(percentTime >= 100)
+    //       {
+    //         $slick.slick('slickNext');
+    //         startProgressbar();
             
-          }
-      }
-    }
+    //       }
+    //   }
+    // }
     
   
   });
 
   
-
-  $('.tab').on('click', function(e){
-    e.preventDefault(); 
-  
-    $($(this).siblings()).removeClass('active');
-    $($(this).parent().siblings().find('.tab-content')).removeClass('active');
-  
-    $(this).addClass('active')
-    $($(this).attr('href')).addClass('active');
-  
-  });
-
-
 //   $('.logo__item').mouseover(function (e) {
 //     $(this).next().css('display', 'block');
 // });
@@ -312,13 +323,17 @@ $(document).ready(function(){
         slidesPerView: 1,
         spaceBetween: 20
       },
-      480: {
-        slidesPerView: 3,
+      550: {
+        slidesPerView: 2,
         spaceBetween: 30
       },
-      700: {
+      750: {
         slidesPerView: 3,
         spaceBetween: 40,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 40
       },
       1400: {
         slidesPerView: 5,
@@ -333,7 +348,7 @@ $(document).ready(function(){
     
   })
 
-  $("#phone").mask("+7(999) 999-99-99");
+  $(".numbox").mask("+7(999) 999-99-99");
 
   $('.nav-toggle').click(function () {
     $(this).toggleClass('opened')
@@ -374,8 +389,4 @@ $(document).ready(function(){
                 } );    
     };
 } )();
-
-
-
-  
   
