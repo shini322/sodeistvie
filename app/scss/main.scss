@@ -373,7 +373,7 @@ button{
     }
     &__slider-arrow{
         @include for-md{
-            display: none;
+            display: none !important;
         }
     }
     &__slider-item{
@@ -386,11 +386,13 @@ button{
         @include for-md{
             min-height: 0;
             padding: 70px 0 100px;
+            min-height: 439px;
         }
         @include for-sm{
             padding: 50px 0 70px;
         }
         @include for-md-mob{
+            min-height: 287px;
             padding: 20px 0 60px;
         }
     }
@@ -459,6 +461,7 @@ button{
         }
         
     }
+   
     &__swiper-pagination{
         background-color: $white;
     }
